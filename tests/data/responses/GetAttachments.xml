@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Root>
+    <ResponseStatus>
+        <Status>OK</Status>
+        <TimeStamp>12.1.2020 10:11:12</TimeStamp>
+    </ResponseStatus>
+    <Attachments>
+        <Attachment>
+            <AttachmentNetvisorKey>30</AttachmentNetvisorKey>
+            <AttachmentPageNumber>1</AttachmentPageNumber>
+            <FileName>5520_001.pdf</FileName>
+            <FileType>application/pdf</FileType>
+            <Content>test</Content>
+        </Attachment>
+        <Attachment>
+            <AttachmentNetvisorKey>40</AttachmentNetvisorKey>
+            <AttachmentPageNumber>1</AttachmentPageNumber>
+            <FileName>5540_001.pdf</FileName>
+            <FileType>application/pdf</FileType>
+            <Content>test</Content>
+        </Attachment>
+    </Attachments>
+</Root>

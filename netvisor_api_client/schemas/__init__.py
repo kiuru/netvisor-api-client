@@ -13,3 +13,4 @@ from .sales_invoices import (  # noqa
     SalesInvoiceListSchema
 )
 from .sales_payments import SalesPaymentListSchema  # noqa
+from .purchase_invoice_attachments import PurchaseInvoiceAttachmentListSchema  # noqa
