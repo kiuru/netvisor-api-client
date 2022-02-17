@@ -133,7 +133,8 @@ class TestAccountingService(object):
                         "account_number": 100,
                         "vat_percent": 20,
                         "vat_code": "-",
-                        "dimensions": [],
+                        "account_dimension": {"key": 160, "text": "Vahennykset"},
+                        "dimensions": []
                     },
                     {
                         "key": 122,

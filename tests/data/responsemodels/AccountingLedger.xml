@@ -19,6 +19,7 @@
         <AccountNumber>100</AccountNumber>
         <VatPercent>20</VatPercent>
         <VatCode>-</VatCode>
+        <AccountDimension NetvisorKey="160">Vahennykset</AccountDimension>
       </VoucherLine>
       <VoucherLine>
         <NetvisorKey>122</NetvisorKey>
@@ -44,6 +45,7 @@
         <AccountNumber>300</AccountNumber>
         <VatPercent>33</VatPercent>
         <VatCode>-</VatCode>
+        <AccountDimension NetvisorKey="161">Poistot</AccountDimension>
         <Dimension>
             <DimensionName>Sales</DimensionName>
             <DimensionItem>Mike</DimensionItem>
