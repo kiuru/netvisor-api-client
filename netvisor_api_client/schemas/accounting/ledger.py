@@ -15,14 +15,21 @@ class DimensionSchema(Schema):
     name = fields.String(load_from="dimension_name")
     item = fields.String(load_from="dimension_item", allow_none=True)
 
+class AccountDimensionSchema(Schema):
+    key = fields.Integer(load_from="@netvisor_key")
+    text = fields.String(load_from="#text")
 
 class VoucherLineSchema(Schema):
     key = fields.Integer(load_from="netvisor_key")
     line_sum = Decimal()
     description = fields.String(allow_none=True)
     account_number = fields.Integer()
-    vat_percent = fields.Integer()
+    vat_percent = Decimal()
     vat_code = fields.String(allow_none=True)
+    account_dimension = fields.Nested(
+        AccountDimensionSchema,
+        load_from="account_dimension"
+    )
     dimensions = List(
         fields.Nested(DimensionSchema), load_from="dimension", missing=list
     )
@@ -33,13 +40,21 @@ class VoucherNetvisorURISchema(Schema):
     key = fields.Integer(load_from="#text")
 
 
+class VoucherClassSchema(Schema):
+    netvisorkey = fields.String(load_from="@netvisorkey")
+    value = fields.String(load_from="#text")
+
+
 class VoucherSchema(Schema):
     status = fields.String(load_from="@status")
     key = fields.Integer(load_from="netvisor_key")
     date = FinnishDate(load_from="voucher_date")
     number = fields.Integer(load_from="voucher_number")
-    description = fields.String(load_from="voucher_description", allow_none=True)
-    class_ = fields.String(attribute="class", load_from="voucher_class")
+    description = fields.String(
+        load_from="voucher_description",
+        allow_none=True
+    )
+    class_ = fields.Nested(VoucherClassSchema, attribute="class", load_from="voucher_class")
     linked_source = fields.Nested(
         VoucherNetvisorURISchema, load_from="linked_source_netvisor_key"
     )
