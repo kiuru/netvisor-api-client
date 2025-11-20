@@ -8,6 +8,7 @@ netvisor.responsemodels.base
 
 import inflection
 import xmltodict
+import re
 
 from ..exc import NetvisorError
 
@@ -24,9 +25,19 @@ class Response(object):
         self.raise_for_failure()
         self.deserialize()
 
+
+    def clean_xml(self, xml_string):
+        # Remove control characters except tab (0x09), newline (0x0A), and carriage return (0x0D)
+        # Remove U+0002 (0x02) character from the XML string
+        # Remove both literal U+0002 and XML entity &#x2;
+        xml_string = xml_string.replace('&#x2;', '')
+        return xml_string
+
     def parse(self):
         self.raw_data = xmltodict.parse(
-            self.response.text, postprocessor=self.postprocess, dict_constructor=dict
+            self.clean_xml(self.response.text),
+            postprocessor=self.postprocess,
+            dict_constructor=dict
         )
 
     def postprocess(self, _path, key, data):
